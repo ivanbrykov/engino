@@ -7,18 +7,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MicroController extends AbstractController
 {
-    private $haml;
 
-    public function __construct(Haml $haml)
-    {
-        $this->haml = $haml;
-    }
-
-    public function randomNumber($limit)
+    public function randomNumber($limit, Haml $haml)
     {
         $number = random_int(0, $limit);
-
-        return $this->haml->render('random.html.haml', [
+        return $haml->render('random.html.haml', [
             'number' => $number,
         ]);
     }
