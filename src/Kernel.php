@@ -17,37 +17,17 @@ class Kernel extends BaseKernel
         $bundles = [
             new \Symfony\Bundle\FrameworkBundle\FrameworkBundle()
         ];
-
-//        if ($this->getEnvironment() == 'dev') {
-//            $bundles[] = new \Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
-//        }
-
         return $bundles;
     }
 
     protected function configureContainer(ContainerBuilder $c, LoaderInterface $loader)
     {
         $loader->load(__DIR__ . '/../config/framework.yml');
-
-        // configure WebProfilerBundle only if the bundle is enabled
-        if (isset($this->bundles['WebProfilerBundle'])) {
-            $c->loadFromExtension('web_profiler', [
-                'toolbar'             => true,
-                'intercept_redirects' => false,
-            ]);
-        }
     }
 
     protected function configureRoutes(RouteCollectionBuilder $routes)
     {
-        // import the WebProfilerRoutes, only if the bundle is enabled
-        if (isset($this->bundles['WebProfilerBundle'])) {
-            $routes->import('@WebProfilerBundle/Resources/config/routing/wdt.xml', '/_wdt');
-            $routes->import('@WebProfilerBundle/Resources/config/routing/profiler.xml', '/_profiler');
-        }
-
-        // load the annotation routes
-        //$routes->import(__DIR__ . '/../src/Controller/', '/', 'annotation');
+        $routes->import(__DIR__ . '/../config/routes.yml', '/');
     }
 
     // optional, to use the standard Symfony cache directory

@@ -1,19 +1,24 @@
 <?php
+
 namespace App\Controller;
 
+use App\Haml;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-//use Symfony\Component\Routing\Annotation\Route;
 
 class MicroController extends AbstractController
 {
-    /**
-     * @Route("/random/{limit}")
-     */
+    private $haml;
+
+    public function __construct(Haml $haml)
+    {
+        $this->haml = $haml;
+    }
+
     public function randomNumber($limit)
     {
         $number = random_int(0, $limit);
 
-        return $this->render('micro/random.html.twig', [
+        return $this->haml->render('random.html.haml', [
             'number' => $number,
         ]);
     }

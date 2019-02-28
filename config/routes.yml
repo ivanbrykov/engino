@@ -1,0 +1,3 @@
+random_number:
+    path: /random/{limit}
+    controller: App\Controller\MicroController::randomNumber

@@ -1,3 +1,12 @@
 framework:
     secret: S0ME_SECRET
     profiler: { only_exceptions: false }
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+    App\:
+        resource: '../src/*'
+        exclude: '../src/Kernel.php'
