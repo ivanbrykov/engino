@@ -1,3 +1,8 @@
 random_number:
     path: /random/{limit}
-    controller: App\Controller\MicroController::randomNumber
+    controller: Index\Controller\MicroController::randomNumber
+admin:
+    path: /admin/{uri}
+    controller: App\Controller\MicroController::admin
+    requirements:
+        uri: .*

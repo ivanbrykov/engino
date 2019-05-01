@@ -2,6 +2,8 @@
 
 namespace App;
 
+use MtHaml\Environment;
+use MtHaml\Support\Php\Executor;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 
@@ -13,8 +15,8 @@ class Haml
 
     public function __construct(KernelInterface $kernel)
     {
-        $haml           = new \MtHaml\Environment('php');
-        $this->executor = new \MtHaml\Support\Php\Executor($haml, [
+        $haml           = new Environment('php');
+        $this->executor = new Executor($haml, [
             'cache' => $kernel->getCacheDir() . '/haml',
         ]);
         $this->viewDir  = $kernel->getProjectDir() . '/view';
