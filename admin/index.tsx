@@ -1,11 +1,14 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import { Routes } from './routes';
+// import { Routes } from './routes';
+import { Router } from '@reach/router';
+import App from './App';
+import Settings from './Settings';
 
 ReactDOM.render(
-  <BrowserRouter basename="/admin">
-    <Routes />
-  </BrowserRouter>,
+  <Router basepath="/admin">
+    <App path="/" />
+    <Settings path="settings" />
+  </Router>,
   document.getElementById('root'),
 );
