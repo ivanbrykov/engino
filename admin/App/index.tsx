@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Link, RouteComponentProps } from '@reach/router';
-import styled from 'styled-components';
 import {
   Container,
   Header,
@@ -9,10 +8,11 @@ import {
   Footer,
 } from './styles';
 
-const App = (props: RouteComponentProps): React.ReactElement => (
+const App: React.FunctionComponent<RouteComponentProps> = (): React.ReactElement => (
   <Container>
     <Header>
       Engino veritas
+      {' '}
       <Link to="settings">Settings</Link>
     </Header>
     <Sidebar>Sidebar</Sidebar>
